@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 011</title>
+</head>
+<body>
+    <h1>Sistema de Estrangeiros</h1>
+
+    Digite seu País: <input type="text" name="txtp" id="txtp">
+    <input type="button" value="Verificar" onclick="verificar()">
+    <div id="res">
+    </div>
+
+</body>
+
+<script>
+    function verificar(){
+        let p = window.document.getElementById('txtp')
+        let res = window.document.getElementById('res')
+        let x = p.value
+        if(x != 'Brasil'){
+            res.innerHTML = `<p>Você é <strong>Estrangeiro</strong>, pois é de(o): <strong>${x}</strong></p>`
+        } else {
+            res.innerHTML = `<p>Você é <strong>Brasileiro</strong>, pois é de(o): <strong>${x}</strong></p>`
+        }
+    }
+</script>
+
+</html>
