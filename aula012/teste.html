@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+        html, body{
+            height: 100vh;
+            width: 100vw;
+        }
+
+        main{
+            position: relative;
+            height: 100vh;
+        }
+
+        #caixa{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1{
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        label{
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        input{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        #res{
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+        
+        #botao{
+            display: block;
+            margin: 20px auto;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bolder;
+            border: none;
+            background-color: gray;
+            color: white;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.985);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #botao:hover{
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid gray;
+            color: black;
+            text-shadow: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <div id="caixa">
+            <h1>Cálculo de IMC </h1>
+
+            <img src="https://jaleko-blog-files.s3.amazonaws.com/wp-content/uploads/2020/11/05145202/Classificacao-da-Obesidade-de-acordo-com-o-IMC.jpeg" alt="Classificações da Tabela de IMC">
+
+            <p>
+                <label for="inome">Nome: </label>
+                <input type="text" name="Nome" id="inome">
+            </p>
+            <p>
+                <label for="ipeso">Peso: </label>
+                <input type="number" name="peso" id="ipeso">
+            </p>
+            <p>
+                <label for="ialtura">Altura: </label>
+                <input type="number" name="altura" id="ialtura">
+            </p>
+            <p>
+                <input type="submit" value="Calcular IMC" id="botao" onclick="calcularimc()">
+            </p>
+            <p>
+                <div id="res">
+                    Resultado: 
+                </div>
+            </p>
+        </div>
+
+    </main>
+</body>
+
+<script>
+    function calcularimc(){
+        var nome = window.document.getElementById('inome')
+        var peso = window.document.getElementById('ipeso')
+        var altura = window.document.getElementById('ialtura')
+        var res = window.document.getElementById('res')
+
+        var rnome = nome.value
+        var rpeso = Number(peso.value)
+        var raltura = Number(altura.value)
+        
+        var imc = rpeso / (raltura * raltura)
+
+        if(imc < 18.5){
+            res.innerHTML = `<p>Nome: <strong>${rnome}</strong></p>`
+            res.innerHTML += `<p>Peso: <strong>${rpeso} (Kg)</strong></p>`
+            res.innerHTML += `<p>Altura: <strong>${raltura} (cm)</strong></p>`
+            res.innerHTML += `<p>Classificação:<strong> Magreza</strong></p>`
+            res.innerHTML += `<p>Obesidade:<strong> Grau 0</strong></p>`
+            res.innerHTML += `<p>Risco de Doença:<strong> Elevado</strong></p>`
+            res.innerHTML += `<p>Seu IMC é: <strong>${imc.toFixed(2)}</strong></p>`
+        } else if (imc > 18.5 && imc <= 24.9){
+            res.innerHTML = `<p>Nome: <strong>${rnome}</strong></p>`
+            res.innerHTML += `<p>Peso: <strong>${rpeso} (Kg)</strong></p>`
+            res.innerHTML += `<p>Altura: <strong>${raltura} (cm)</strong></p>`
+            res.innerHTML += `<p>Classificação:<strong> Normal</strong></p>`
+            res.innerHTML += `<p>Obesidade:<strong> Grau 0</strong></p>`
+            res.innerHTML += `<p>Risco de Doença:<strong> Normal</strong></p>`
+            res.innerHTML += `<p>Seu IMC é: <strong>${imc.toFixed(2)}</strong></p>`
+        } else if (imc > 25 && imc < 29.9){
+            res.innerHTML = `<p>Nome: <strong>${rnome}</strong></p>`
+            res.innerHTML += `<p>Peso: <strong>${rpeso} (Kg)</strong></p>`
+            res.innerHTML += `<p>Altura: <strong>${raltura} (cm)</strong></p>`
+            res.innerHTML += `<p>Classificação:<strong> Sobrepeso</strong></p>`
+            res.innerHTML += `<p>Obesidade:<strong> Grau 0</strong></p>`
+            res.innerHTML += `<p>Risco de Doença:<strong> Pouco elevado</strong></p>`
+            res.innerHTML += `<p>Seu IMC é: <strong>${imc.toFixed(2)}</strong></p>`
+        } else if (imc > 30 && imc < 34.9){
+            res.innerHTML = `<p>Nome: <strong>${rnome}</strong></p>`
+            res.innerHTML += `<p>Peso: <strong>${rpeso} (Kg)</strong></p>`
+            res.innerHTML += `<p>Altura: <strong>${raltura} (cm)</strong></p>`
+            res.innerHTML += `<p>Classificação:<strong> Obesidade</strong></p>`
+            res.innerHTML += `<p>Obesidade:<strong> Grau I</strong></p>`
+            res.innerHTML += `<p>Risco de Doença:<strong> Elevado</strong></p>`
+            res.innerHTML += `<p>Seu IMC é: <strong>${imc.toFixed(2)}</strong></p>`
+        } else if (imc > 35 && imc < 39.9){
+            res.innerHTML = `<p>Nome: <strong>${rnome}</strong></p>`
+            res.innerHTML += `<p>Peso: <strong>${rpeso} (Kg)</strong></p>`
+            res.innerHTML += `<p>Altura: <strong>${raltura} (cm)</strong></p>`
+            res.innerHTML += `<p>Classificação:<strong> Obesidade</strong></p>`
+            res.innerHTML += `<p>Obesidade:<strong> Grau II</strong></p>`
+            res.innerHTML += `<p>Risco de Doença:<strong> Muito elevado</strong></p>`
+            res.innerHTML += `<p>Seu IMC é: <strong>${imc.toFixed(2)}</strong></p>`
+        } else if (imc > 40){
+            res.innerHTML = `<p>Nome: <strong>${rnome}</strong></p>`
+            res.innerHTML += `<p>Peso: <strong>${rpeso} (Kg)</strong></p>`
+            res.innerHTML += `<p>Altura: <strong>${raltura} (cm)</strong></p>`
+            res.innerHTML += `<p>Classificação:<strong> Obesidade</strong></p>`
+            res.innerHTML += `<p>Obesidade:<strong> Grau III</strong></p>`
+            res.innerHTML += `<p>Risco de Doença:<strong> Extremamente Elevado</strong></p>`
+            res.innerHTML += `<p>Seu IMC é: <strong>${imc.toFixed(2)}</strong></p>`
+        }
+    }
+
+    /* 
+    < 18.5
+    > 18.5 && < 24.9
+    > 25 && < 29.9
+
+    */
+
+</script>
+
+</html>
