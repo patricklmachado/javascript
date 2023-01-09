@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Último Treino</title>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            height: 100vh;
+            background-color: lightgray;
+        }
+        header{
+            text-align: center;
+        }
+        section{
+            margin: auto;
+            background-color: white;
+            width: 500px;
+            height: 350px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.363);
+            border-radius: 10px;
+        }
+        #msg{
+            font-size: 1.1em;
+        }
+        div{
+            padding: 10px;
+            text-align: center;
+        }
+        footer{
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body onload="carregar()">
+    <header>
+        <h1>Horas do Dia</h1>
+    </header>
+    <section>
+        <div id="msg">
+            msg aqui...
+        </div>
+        <div id="imagem">
+            <img src="../modelo/fotomanha.png" id="img" alt="foto de manhã">
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Patrick Machado</p>
+    </footer>
+</body>
+<script>
+    function carregar(){
+        var msg = document.getElementById('msg')
+        var img = document.getElementById('img')
+        var data = new Date()
+        var horas = data.getHours()
+        if(horas > 0 && horas < 6){
+            msg.innerHTML = `São <strong>${horas}</strong> horas da Madrugada.`
+            img.src = '../modelo/fotodenoite.png'
+            window.document.body.style.background = '#5f4872'
+        } else if (horas >= 6 && horas < 12){
+            msg.innerHTML = `São <strong>${horas}</strong> horas da Manhã.`
+            img.src = '../modelo/fototarde.png'
+            window.document.body.style.background = '#fe9f55'
+        } else if(horas >= 12 && horas < 18){
+            msg.innerHTML = `São <strong>${horas}</strong> horas da Tarde.`
+            img.src = '../modelo/fototarde.png'
+            window.document.body.style.background = '#ec874b'
+        } else {
+            msg.innerHTML = `São <strong>${horas}</strong> horas da Noite.`
+            img.src = '../modelo/fotodenoite.png'
+            window.document.body.style.background = '#5f4872'
+        }
+    }
+</script>
+</html>

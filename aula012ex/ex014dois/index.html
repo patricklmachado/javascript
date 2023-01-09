@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hora do Dia</title>
+
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+      }
+
+      header {
+        color: black;
+        text-align: center;
+      }
+
+      body {
+      }
+
+      section {
+        background-color: white;
+        padding: 10px;
+        height: 400px;
+        width: 400px;
+        border-radius: 10px;
+        margin: auto;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.363);
+      }
+
+      div {
+        padding: 10px;
+        text-align: center;
+      }
+
+      footer {
+        text-align: center;
+        color: black;
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body onload="carregar()">
+    <header>
+      <h1>Horas do Dia</h1>
+    </header>
+
+    <section>
+      <div id="msg">Aqui é a mensagem...</div>
+      <div id="foto">
+        <img src="" id="img" alt="foto de manhã" />
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; Patrick Machado</p>
+    </footer>
+  </body>
+
+  <script>
+    function carregar() {
+      var msg = window.document.getElementById("msg")
+      var img = window.document.getElementById("img")
+      var data = new Date()
+      var hora = 19 //data.getHours()
+      if (hora >= 0 && hora < 12) {
+        msg.innerHTML = `Está de tarde, são ${hora} horas`
+        img.src = "../modelo/fotomanha.png"
+        window.document.body.style.background = "#FEFAEF"
+      } else if (hora >= 12 && hora <= 18) {
+        msg.innerHTML = `Está de tarde, são ${hora} horas.`
+        img.src = "../modelo/fototarde.png"
+        window.document.body.style.background = "#FDC377"
+      } else {
+        msg.innerHTML = `Está de noite, são ${hora} horas.`
+        img.src = "../modelo/fotodenoite.png"
+        window.document.body.style.background = "#5f4872"
+      }
+    }
+  </script>
+</html>
